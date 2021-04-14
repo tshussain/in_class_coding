@@ -36,7 +36,9 @@ public class ConsoleView {
 
             System.out.println("Please enter customer age");
             int age = in.nextInt();
-            int id = 1;
+
+            System.out.println("Please enter customer id");
+            int id = in.nextInt();
 
             Customer customer = new Customer(id, name, age, "");
             return customer;
@@ -45,4 +47,27 @@ public class ConsoleView {
             return null;
         }
     }
+
+    /** Returns null if failed to enter properly */
+    public int getIdToRetrieve() {
+        Scanner in = new Scanner(System.in);
+        try {
+            System.out.println("Please enter id of customer to retrieve");
+            int id = in.nextInt();
+
+            return id;
+        } catch (InputMismatchException ime) {
+            System.out.println("Failed input");
+            return 0;
+        }
+    }
+
+    public void showCustomer(Customer customer) {
+        System.out.println("Customer {" +
+            "id=" + customer.id +
+                    ", name='" + customer.name + '\'' +
+                    ", age=" + customer.age +
+                    ", address='" + customer.address + '\'' +
+                    '}');
+       }
 }

@@ -20,9 +20,18 @@ public class MyController {
 
         switch (choice) {
             case CREATE -> { doCreate(); return true; }
+            case GETBYID -> { doGetById(); return true;}
             case EXIT -> { return false; }
             default -> {return true;}
         }
+    }
+
+    private void doGetById() {
+        int id = view.getIdToRetrieve();
+
+        Customer customer = customerDatabase.findCustomerById(id);
+
+        view.showCustomer(customer);
     }
 
     public void doCreate() {

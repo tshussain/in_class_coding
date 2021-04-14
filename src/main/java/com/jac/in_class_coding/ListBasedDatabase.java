@@ -19,6 +19,17 @@ public class ListBasedDatabase implements CustomerDatabase {
         return customerList.add(customer);
     }
 
+    /** Return the matching customer if it is in the database, otherwise null. */
+    @Override
+    public Customer findCustomerById(int id) {
+        for (Customer customer: customerList) {
+            if (customer.id == id) {
+                return customer;
+            }
+        }
+        return null;
+    }
+
     // example of a method that is not part of the CustomerDatabase interface
     public void myOtherMethod() {
         System.out.println("Another method - but not part of CustomerDatabase");
