@@ -9,17 +9,15 @@ public class InClassCodingApplication {
     public static void main(String[] args) {
         SpringApplication.run(InClassCodingApplication.class, args);
 
+        ConsoleView view = new ConsoleView();
         CustomerDatabase customerDatabase = new ListBasedDatabase();
 
-//        Customer myCustomer = new Customer(1, "Joshua",
-//                12, "12 Park Ave");
+        MyController controller = new MyController();
+        controller.configure(view, customerDatabase);
 
-        ConsoleView view = new ConsoleView();
-        Customer myCustomer = view.getCustomer();
 
-        if (myCustomer != null) {
-            customerDatabase.save(myCustomer);
-        }
+
+
 
         // Day 1 example
 //        InClassExamples.switchExample();
