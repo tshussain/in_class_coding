@@ -14,11 +14,14 @@ public class MyController {
         this.customerDatabase = customerDatabase;
     }
 
-    public void getAndDoNextAction() {
+    /** return false if exit */
+    public boolean getAndDoNextAction() {
         UserChoice choice = view.requestAction();
 
         switch (choice) {
-            case CREATE -> { doCreate(); }
+            case CREATE -> { doCreate(); return true; }
+            case EXIT -> { return false; }
+            default -> {return true;}
         }
     }
 

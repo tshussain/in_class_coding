@@ -13,10 +13,12 @@ public class ConsoleView {
             System.out.println("What would you like to do next?");
             System.out.println("  1. Add New Customer");
             System.out.println("  2. Get Customer by Id");
+            System.out.println("  3. Exit");
             int choice = in.nextInt();
             switch (choice) {
                 case 1 -> { return UserChoice.CREATE; }
                 case 2 -> { return UserChoice.GETBYID;}
+                case 3 -> { return UserChoice.EXIT;}
                 default -> {return UserChoice.NONE; }
             }
         } catch (InputMismatchException ime) {

@@ -15,11 +15,11 @@ public class InClassCodingApplication {
         MyController controller = new MyController();
         controller.configure(view, customerDatabase);
 
-        controller.getAndDoNextAction();
-
-
-
-
+        boolean continueLoop = true;
+        while (continueLoop) {
+            continueLoop = controller.getAndDoNextAction();
+        }
+        System.out.println("Thanks.  Bye.");
 
         // Day 1 example
 //        InClassExamples.switchExample();
