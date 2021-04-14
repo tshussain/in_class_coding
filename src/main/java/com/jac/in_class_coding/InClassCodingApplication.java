@@ -11,13 +11,19 @@ public class InClassCodingApplication {
 
         CustomerDatabase customerDatabase = new ListBasedDatabase();
 
-        Customer myCustomer = new Customer(1, "Joshua",
-                12, "12 Park Ave");
-        customerDatabase.save(myCustomer);
+//        Customer myCustomer = new Customer(1, "Joshua",
+//                12, "12 Park Ave");
+
+        ConsoleView view = new ConsoleView();
+        Customer myCustomer = view.getCustomer();
+
+        if (myCustomer != null) {
+            customerDatabase.save(myCustomer);
+        }
 
         // Day 1 example
-        InClassExamples.switchExample();
-        InClassExamples.switchExample();
+//        InClassExamples.switchExample();
+//        InClassExamples.switchExample();
 
         // Examples of accessing the same object as itself or as the interface it implements
         // uncomment out these 3 lines to see what works and what doesn't
