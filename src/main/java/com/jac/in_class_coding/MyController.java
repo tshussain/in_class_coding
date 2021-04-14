@@ -14,6 +14,14 @@ public class MyController {
         this.customerDatabase = customerDatabase;
     }
 
+    public void getAndDoNextAction() {
+        UserChoice choice = view.requestAction();
+
+        switch (choice) {
+            case CREATE -> { doCreate(); }
+        }
+    }
+
     public void doCreate() {
         Customer myCustomer = view.getCustomer();
 

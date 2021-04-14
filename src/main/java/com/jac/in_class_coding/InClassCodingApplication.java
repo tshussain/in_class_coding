@@ -15,6 +15,8 @@ public class InClassCodingApplication {
         MyController controller = new MyController();
         controller.configure(view, customerDatabase);
 
+        controller.getAndDoNextAction();
+
 
 
 
