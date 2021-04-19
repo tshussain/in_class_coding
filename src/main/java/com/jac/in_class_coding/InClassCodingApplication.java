@@ -1,5 +1,6 @@
 package com.jac.in_class_coding;
 
+import com.jac.in_class_coding.inclassexamples.VisibilityModifiers;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,6 +15,9 @@ public class InClassCodingApplication {
 
         MyController controller = new MyController();
         controller.configure(view, customerDatabase);
+
+        VisibilityModifiers vm = new VisibilityModifiers();
+        vm.addEmployee();
 
         boolean continueLoop = true;
         while (continueLoop) {

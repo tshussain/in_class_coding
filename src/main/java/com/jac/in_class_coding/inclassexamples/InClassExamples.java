@@ -1,4 +1,4 @@
-package com.jac.in_class_coding;
+package com.jac.in_class_coding.inclassexamples;
 
 public class InClassExamples {
 
