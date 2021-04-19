@@ -76,10 +76,10 @@ public class ConsoleView {
 
     public void showCustomer(Customer customer) {
         System.out.println("Customer {" +
-                "id=" + customer.id +
-                ", name='" + customer.name + '\'' +
-                ", age=" + customer.age +
-                ", address='" + customer.address + '\'' +
+                "id=" + customer.getId() +
+                ", name='" + customer.getName() + '\'' +
+                ", age=" + customer.getAge() +
+                ", address='" + customer.getAddress() + '\'' +
                 '}');
     }
 
