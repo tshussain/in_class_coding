@@ -4,4 +4,6 @@ public interface CustomerDatabase {
     boolean save(Customer customer);
 
     Customer findCustomerById(int id);
+
+    Customer removeById(int id);
 }

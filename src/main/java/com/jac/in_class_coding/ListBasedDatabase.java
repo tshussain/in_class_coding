@@ -13,18 +13,41 @@ public class ListBasedDatabase implements CustomerDatabase {
         customerList = new ArrayList<Customer>();
     }
 
-    // Put the customer into the database's list
+    /** Put the customer into the database's list
+     *
+     *  Uniqueness of id??
+     */
     @Override
     public boolean save(Customer customer) {
         return customerList.add(customer);
     }
 
-    /** Return the matching customer if it is in the database, otherwise null. */
+    /** Return the matching customer if it is in the database, otherwise null.
+     *
+     *  Assumes uniqueness of id
+     */
     @Override
     public Customer findCustomerById(int id) {
         for (Customer customer: customerList) {
             if (customer.id == id) {
                 return customer;
+            }
+        }
+        return null;
+    }
+
+    /** Removes the customer with the given id from the database if it exists.
+     *
+     *  Assumes uniques of id.
+     */
+    @Override
+    public Customer removeById(int targetIdToRemove) {
+        for (int index = 0; index < customerList.size(); index++) {
+            Customer currentCustomerAtIndex = customerList.get(index);
+            int idOfCurrentCustomer = currentCustomerAtIndex.id;
+            if (idOfCurrentCustomer == targetIdToRemove) {
+                Customer result = customerList.remove(index);
+                return result;
             }
         }
         return null;

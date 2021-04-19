@@ -21,6 +21,7 @@ public class MyController {
         switch (choice) {
             case CREATE -> { doCreate(); return true; }
             case GETBYID -> { doGetById(); return true;}
+            case REMOVEBYID -> { doRemoveByID(); return true;}
             case EXIT -> { return false; }
             default -> {return true;}
         }
@@ -41,4 +42,26 @@ public class MyController {
             customerDatabase.save(myCustomer);
         }
     }
+
+    /** Ask user for id (via the view) and then remove it (via the model/database) */
+    public void doRemoveByID() {
+        // Get from user what customer to remove by asking for the id
+        int id = view.getIdToRemove();
+        try {
+            Customer customerRemoved = customerDatabase.removeById(id);
+            if (customerRemoved != null) {
+                view.showCustomer(customerRemoved);
+                System.out.println("This customer has been deleted");
+                System.out.println();
+            } else {
+                System.out.println("Remove failed");
+            }
+        } catch (Exception e) {
+            System.out.println("Can't remove a customer that does not exist");
+            System.out.println();
+        }
+
+    }
+
+
 }
