@@ -31,13 +31,50 @@ class Employee {
         return employeeId;
     }
 
+    /** Uses business rules that need to be applied consistently.
+     *   Keep the commendation field private so subclasses cannot violate those rules.
+     */
     public final void addCommendation(String commendation, Supervisor supervisor) {
         // Verify security rating to add commendation
+        if (supervisor.getSecurityRating() > 3) {
+            commendations.add(commendation);
+        }
+//        supervisor.getEmployeeId();  // dangerous -- shouldn't be able to treat Supervisor as an Employee
     }
 }
 
-class Supervisor extends Employee {
+// Old version where a Supervisor is-A Employee
+// class Supervisor extends Employee {
+//    int securityRating;
+//
+//    int getSecurityRating() {
+//        return securityRating;
+//    }
+//}
+
+interface Supervisor {
+    int getSecurityRating();
+}
+
+/** Supervisor is NOT an employee (no is-A relationship).
+ *
+ *  Instead SupervisorEmployee is-A employee
+ *   and    SupervisorEmployee is-A Supervisor
+ */
+class SupervisorEmployee extends Employee implements Supervisor {
     int securityRating;
+    @Override
+    public int getSecurityRating() {
+        return securityRating;
+    }
+}
+
+class IndependentSupervisor implements Supervisor {
+
+    @Override
+    public int getSecurityRating() {
+        return 3;
+    }
 }
 
 class PartTimeEmployee extends Employee {
