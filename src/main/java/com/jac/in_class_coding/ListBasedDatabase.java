@@ -15,11 +15,16 @@ public class ListBasedDatabase implements CustomerDatabase {
 
     /** Put the customer into the database's list
      *
-     *  Uniqueness of id??
+     *  Enforce uniqueness of id.  If id already exists, then don't add.
      */
     @Override
-    public boolean save(Customer customer) {
-        return customerList.add(customer);
+    public boolean save(Customer customerToAdd) {
+        Customer existingCustomer = findCustomerById(customerToAdd.id);
+        if (existingCustomer == null) { // only add if a customer with same id doesn't exist.
+            return customerList.add(customerToAdd);
+        } else {
+            return false;
+        }
     }
 
     /** Return the matching customer if it is in the database, otherwise null.
