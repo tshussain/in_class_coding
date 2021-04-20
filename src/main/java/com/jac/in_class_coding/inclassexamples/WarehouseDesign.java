@@ -202,7 +202,35 @@
 //
 //
 //
+// Potential approaches to implementation
+//addItemToShelf(Item item) {
+//        shelf.addItem(item, this);
+//        central.increaseStock(item, this);
+//        }
 //
+//
+//        addItem(Item item, StockingTeamMember teamMember) {
+//        myListOfItems.add(item);
+//        }
+//
+//        decreaseStock(Item item, FullfillmentTeamMember member) {
+//        decreaseStock_internal(item, member.id);
+//        }
+//
+//        addWastage(Item item, StockingTeamMember member) {
+//        decreaseStock_internal(item, member.id);
+//        }
+//
+//
+//
+//class DoAnythingMember implements FullfillmentTeamMember, StockingTeamMember {
+//}
+//
+//interface Team
+//
+//class Joe extends Employee implement FullfillmentTeamMember
+//
+
 //
 //
 //
