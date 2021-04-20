@@ -39,7 +39,10 @@ public class MyController {
         Customer myCustomer = view.getCustomer();
 
         if (myCustomer != null) {
-            customerDatabase.save(myCustomer);
+            boolean success = customerDatabase.save(myCustomer);
+            if (success) {
+                view.showCustomer(myCustomer);
+            }
         }
     }
 
