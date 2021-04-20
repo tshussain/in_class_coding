@@ -55,7 +55,7 @@ public class PolymorphismExample {
 
         Animal a2 = (Animal) h; // Paint "animal" on a horse.
 
-        Horse h2 = (Horse) a1;  // forcing a downcast.  Dangerous.  Causes a run-time error in this case.
+//        Horse h2 = (Horse) a1;  // forcing a downcast.  Dangerous.  Causes a run-time error in this case.
 
         Animal a3 = new Horse();  // implicit upcast
 //        a3.ride();  // Fail - can't access method from lower-level class
@@ -89,7 +89,7 @@ public class PolymorphismExample {
         Animal a6 = s;  // upcasting is implicit
         Animal a7 = (Siamese) s;  // upcasting is implicit
 
-        Siamese s2 = (Siamese) a2;  // downcasting (from parent type to child type)
+//        Siamese s2 = (Siamese) a2;  // downcasting (from parent type to child type)
 
         a.sound();  // Polymorphism
 //        a.scratch();  // fails, because of abstraction

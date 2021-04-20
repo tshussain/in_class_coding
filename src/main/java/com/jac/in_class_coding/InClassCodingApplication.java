@@ -26,18 +26,18 @@ public class InClassCodingApplication implements ApplicationContextAware {
 
         MyController controller = new MyController();
         controller.configure(view, customerDatabase);
+//
+//        VisibilityModifiers vm = new VisibilityModifiers();
+//        vm.addEmployee();
+//
+//        PolymorphismExample pe = new PolymorphismExample();
+//        pe.tryOutPoly();
 
-        VisibilityModifiers vm = new VisibilityModifiers();
-        vm.addEmployee();
-
-        PolymorphismExample pe = new PolymorphismExample();
-        pe.tryOutPoly();
-
-//        boolean continueLoop = true;
-//        while (continueLoop) {
-//            continueLoop = controller.getAndDoNextAction();
-//        }
-//        System.out.println("Thanks.  Bye.");
+        boolean continueLoop = true;
+        while (continueLoop) {
+            continueLoop = controller.getAndDoNextAction();
+        }
+        System.out.println("Thanks.  Bye.");
 
         // Day 1 example
 //        InClassExamples.switchExample();
