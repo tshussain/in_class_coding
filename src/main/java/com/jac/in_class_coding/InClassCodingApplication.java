@@ -1,5 +1,6 @@
 package com.jac.in_class_coding;
 
+import com.jac.in_class_coding.inclassexamples.PolymorphismExample;
 import com.jac.in_class_coding.inclassexamples.VisibilityModifiers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -29,11 +30,14 @@ public class InClassCodingApplication implements ApplicationContextAware {
         VisibilityModifiers vm = new VisibilityModifiers();
         vm.addEmployee();
 
-        boolean continueLoop = true;
-        while (continueLoop) {
-            continueLoop = controller.getAndDoNextAction();
-        }
-        System.out.println("Thanks.  Bye.");
+        PolymorphismExample pe = new PolymorphismExample();
+        pe.tryOutPoly();
+
+//        boolean continueLoop = true;
+//        while (continueLoop) {
+//            continueLoop = controller.getAndDoNextAction();
+//        }
+//        System.out.println("Thanks.  Bye.");
 
         // Day 1 example
 //        InClassExamples.switchExample();
