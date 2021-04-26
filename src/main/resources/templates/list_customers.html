@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Customers</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <td><b>Id</b></td>
+        <td><b>Name</b></td>
+        <td><b>Age</b></td>
+    </tr>
+    </thead>
+    <tr th:each="listValue : ${customers}">
+        <td th:text="${listValue.id}"/>
+        <td th:text="${listValue.name}"/>
+        <td th:text="${listValue.age}"/>
+    </tr>
+</table>
+</body>
+</html>
