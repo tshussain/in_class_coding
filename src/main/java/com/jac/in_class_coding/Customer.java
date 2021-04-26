@@ -1,11 +1,14 @@
 package com.jac.in_class_coding;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Customer {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
     String name;
     int age;
