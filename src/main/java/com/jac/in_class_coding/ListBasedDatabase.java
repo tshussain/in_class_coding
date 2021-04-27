@@ -1,5 +1,7 @@
 package com.jac.in_class_coding;
 
+import com.jac.in_class_coding.entity.Customer;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +21,7 @@ public class ListBasedDatabase implements CustomerDatabase {
      */
     @Override
     public boolean save(Customer customerToAdd) {
-        Customer existingCustomer = findCustomerById(customerToAdd.id);
+        Customer existingCustomer = findCustomerById(customerToAdd.getId());
         if (existingCustomer == null) { // only add if a customer with same id doesn't exist.
             return customerList.add(customerToAdd);
         } else {
@@ -34,7 +36,7 @@ public class ListBasedDatabase implements CustomerDatabase {
     @Override
     public Customer findCustomerById(int id) {
         for (Customer customer: customerList) {
-            if (customer.id == id) {
+            if (customer.getId() == id) {
                 return customer;
             }
         }
@@ -49,7 +51,7 @@ public class ListBasedDatabase implements CustomerDatabase {
     public Customer removeById(int targetIdToRemove) {
         for (int index = 0; index < customerList.size(); index++) {
             Customer currentCustomerAtIndex = customerList.get(index);
-            int idOfCurrentCustomer = currentCustomerAtIndex.id;
+            int idOfCurrentCustomer = currentCustomerAtIndex.getId();
             if (idOfCurrentCustomer == targetIdToRemove) {
                 Customer result = customerList.remove(index);
                 return result;

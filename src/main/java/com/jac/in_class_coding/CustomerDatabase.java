@@ -1,5 +1,7 @@
 package com.jac.in_class_coding;
 
+import com.jac.in_class_coding.entity.Customer;
+
 /** Hide all the nitty-gritty details of the database *
  *
  *  Provided a way to access the data

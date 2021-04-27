@@ -1,5 +1,7 @@
-package com.jac.in_class_coding;
+package com.jac.in_class_coding.controller;
 
+import com.jac.in_class_coding.entity.Customer;
+import com.jac.in_class_coding.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -8,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @Controller
-public class SpringMvcController {
+public class CustomerMvcController {
 
     @Autowired
     private CustomerRepository customerRepository;

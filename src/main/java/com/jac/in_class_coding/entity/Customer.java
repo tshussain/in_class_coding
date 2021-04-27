@@ -1,9 +1,7 @@
-package com.jac.in_class_coding;
+package com.jac.in_class_coding.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Customer {
@@ -13,6 +11,9 @@ public class Customer {
     String name;
     int age;
     String address;
+
+    @OneToMany
+    List<Purchase> purchases;
 
     public Customer() {
     }
@@ -55,5 +56,19 @@ public class Customer {
     public String getAddress() {
         return address;
     }
+
+    public List<Purchase> getPurchases() {
+        return purchases;
+    }
+
+    /** Adds an item to the list of purchases we have */
+    public void addPurchase(Purchase purchase) {
+        purchases.add(purchase);
+    }
+
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
+    }
+
 
 }

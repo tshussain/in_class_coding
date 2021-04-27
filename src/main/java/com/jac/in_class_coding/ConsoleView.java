@@ -1,6 +1,8 @@
 package com.jac.in_class_coding;
 
 
+import com.jac.in_class_coding.entity.Customer;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

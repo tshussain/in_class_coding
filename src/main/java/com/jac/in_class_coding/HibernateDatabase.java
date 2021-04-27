@@ -1,5 +1,8 @@
 package com.jac.in_class_coding;
 
+import com.jac.in_class_coding.entity.Customer;
+import com.jac.in_class_coding.repository.CustomerRepository;
+
 import java.util.Optional;
 
 public class HibernateDatabase implements CustomerDatabase {

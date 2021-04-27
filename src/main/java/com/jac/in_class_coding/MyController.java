@@ -1,5 +1,7 @@
 package com.jac.in_class_coding;
 
+import com.jac.in_class_coding.entity.Customer;
+
 public class MyController {
     private ConsoleView view;
     private CustomerDatabase customerDatabase;
