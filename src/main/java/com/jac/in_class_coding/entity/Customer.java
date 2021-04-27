@@ -15,7 +15,18 @@ public class Customer {
     @OneToMany
     List<Purchase> purchases;
 
+    @OneToOne
+    Profile profile;
+
     public Customer() {
+    }
+
+    public Profile getProfile() {
+        return profile;
+    }
+
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
     public void setId(int id) {
