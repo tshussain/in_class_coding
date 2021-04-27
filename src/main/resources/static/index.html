@@ -15,7 +15,7 @@
     </div>
 </form>
 
-<form action="/add" method="POST">
+<form action="/add" method="GET">
     <p>Let's add a customer.</p>
 
     <div>
@@ -35,6 +35,21 @@
     <button>List customers</button>
 </form>
 
+<form action="/updateName" method="GET">
+    <p>Change customer name</p>
+
+    <div>
+        <label for="theId">Id of customer to change:</label>
+        <input name="id" id="theId" value="-1">
+    </div>
+    <div>
+        <label for="theNewName">New name for customer:</label>
+        <input name="newName" id="theNewName" value="Unknown">
+    </div>
+    <div>
+        <button>Change customer name</button>
+    </div>
+</form>
 
 
 
