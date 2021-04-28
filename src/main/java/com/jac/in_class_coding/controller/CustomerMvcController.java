@@ -54,7 +54,7 @@ public class CustomerMvcController {
         model.addAttribute("customers", customerRepository.findAll());
 
         // This is the name of the html file to display (passing the info in the model).
-        return "select_customer";
+        return "list_customers";
     }
 
     /** Returns a success/fail message to be displayed on the page.  We need to use @ResponseBody */
