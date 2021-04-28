@@ -11,6 +11,7 @@ public class ConsoleView {
     /** Ask the user what they want to do next */
     public UserChoice requestAction() {
         Scanner in = new Scanner(System.in);
+
         try {
             System.out.println("What would you like to do next?");
             System.out.println("  1. Add New Customer");

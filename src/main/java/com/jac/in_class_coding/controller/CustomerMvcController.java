@@ -54,7 +54,7 @@ public class CustomerMvcController {
         model.addAttribute("customers", customerRepository.findAll());
 
         // This is the name of the html file to display (passing the info in the model).
-        return "list_customers";
+        return "select_customer";
     }
 
     /** Returns a success/fail message to be displayed on the page.  We need to use @ResponseBody */
@@ -72,5 +72,21 @@ public class CustomerMvcController {
             return "Customer id " + id + " is not valid - not in database";
         }
     }
+
+    /** Create the listener */
+    @GetMapping("/customerChosen")
+    @ResponseBody
+    public String displayChosenCustomer(int customerId) {
+        Optional<Customer> customerChosen = customerRepository.findById(customerId);
+
+        if (customerChosen.isPresent()) {
+            Customer customerObject = customerChosen.get();
+            return "Customer chosen is: " + customerObject.getName();
+        }  else {
+            return "Error choosing customer";
+        }
+    }
+
+
 
 }

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Customers</title>
+</head>
+<body><
+    <form th:action="@{/customerChosen}" method="get" enctype="multipart/form-data" >
+        <select name="customerId">
+            <option th:each="customer : ${customers}"
+                    th:value="${customer.id}"
+                    th:text="${customer.name}">Customer</option>
+        </select>
+
+        <input type="submit" value="Choose customer"/>
+    </form>
+
+</body>
+</html>
+<!--From: https://www.toptal.com/spring/beginners-guide-to-mvc-with-spring-framework-->
+<!--<form th:action="@{/developer/{id}/skills(id=${developer.id})}" method="post" enctype="multipart/form-data" >-->
+<!--    <select name="skillId">-->
+<!--        <option th:each="skill : ${skills}"-->
+<!--                th:value="${skill.id}"-->
+<!--                th:text="${skill.description}">Skill</option>-->
+<!--    </select>-->
+<!--    <input type="submit" value="Add skill"/>-->
+<!--</form>-->
+
+
+
+

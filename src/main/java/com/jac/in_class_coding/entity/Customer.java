@@ -1,6 +1,7 @@
 package com.jac.in_class_coding.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
