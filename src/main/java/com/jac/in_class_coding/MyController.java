@@ -56,12 +56,12 @@ public class MyController {
             Customer customerRemoved = customerDatabase.removeById(id);
             if (customerRemoved != null) {
                 view.showCustomer(customerRemoved);
-                System.out.println("This customer has been deleted");
-                System.out.println();
             } else {
+                // TODO: This should be moved to a 'feedback' view.
                 System.out.println("Remove failed");
             }
         } catch (Exception e) {
+            // TODO: This should be moved to a 'feedback' view
             System.out.println("Can't remove a customer that does not exist");
             System.out.println();
         }
