@@ -105,7 +105,7 @@ class MyController4 {
 abstract class FoodItem3 {
     protected int grams;
 
-    /* Use an abstract method for code-reuse purposes
+    /* Use a concrete method here in abstract class for code-reuse purposes
         Use the getter so this abstract class doesn't need to have
         access to private information.
      */
