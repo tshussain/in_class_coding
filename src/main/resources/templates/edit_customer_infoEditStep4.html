@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/updateNameEditStep5" method="GET">
+    <p>Change customer name</p>
+    <div>
+<!--        Id of customer to change-->
+<!--        Uses the "hidden" input to makes sure we pass on valuable information
+             to the handler (i.e., the customer id).  This is information
+             we actually got ourselves when the handler before this step
+             called us.  It is not information that we are getting from the
+             users at this step. -->
+        <input type="hidden" th:value="${customer.id}" name="id" />
+    </div>
+    <div>
+        <label for="theNewName">New name for customer (current name is [[${customer.name}]]):</label>
+        <input name="newName" id="theNewName" value="Unknown">
+    </div>
+    <div>
+        <button>Change customer name</button>
+    </div>
+</form>
+</body>
+</html>

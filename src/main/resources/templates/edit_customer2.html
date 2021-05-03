@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- This type of form will put all the inputs entered in the form into fields of the
+        object customer.  This can then be accessed in the controller using
+        public String updateCustomerInfo(@ModelAttribute("customer") Customer customer, Model model) {
+-->
+<form action="#" th:action="@{/updateCustomer}" th:object="${customer}" method="GET">
+    <p>Change customer name</p>
+    <div>
+        <!--        Id of customer to change-->
+<!-- Instead of using value= and ${param} to reflect a parameter to return, we use
+       field= and *{fieldName}.   This will be accessed as newCustomerInfo.fieldName in the controller -->
+        <input type="hidden" th:field="*{id}" name="id" />
+    </div>
+    <div>
+        <label for="theNewName">New name for customer (current name is [[${customer.name}]]):</label>
+        <input th:field="*{name}" id="theNewName" value="Unchanged">
+    </div>
+    <div>
+        <label for="theNewAge">New age for customer (current name is [[${customer.age}]]):</label>
+        <input th:field="*{age}" id="theNewAge" value="-1">
+    </div>
+    <div>
+        <label for="theNewAddress">New age for customer (current name is [[${customer.address}]]):</label>
+        <input th:field="*{address}" id="theNewAddress" value="Unchanged">
+    </div>
+    <div>
+        <button>Change customer info</button>
+    </div>
+</form>
+</body>
+</html>

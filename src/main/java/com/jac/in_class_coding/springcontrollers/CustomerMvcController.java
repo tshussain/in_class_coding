@@ -1,4 +1,4 @@
-package com.jac.in_class_coding.controller;
+package com.jac.in_class_coding.springcontrollers;
 
 import com.jac.in_class_coding.entity.Customer;
 import com.jac.in_class_coding.repository.CustomerRepository;
@@ -46,6 +46,46 @@ public class CustomerMvcController {
 
     /** Returns a 'view' (i.e., the name of an html file).
      *    Since it is a view, we do NOT use @ResponseBody */
+    @GetMapping("/chooseCustomerEditStep1")
+    public String chooseCustomers(ModelMap model) {
+        // Retrieve the information from the database and associate it with the
+        //   attribute "customers" in the model.  This attribute needs to correspond
+        //   to the name used in the html file that will be loaded.
+        model.addAttribute("customers", customerRepository.findAll());
+
+        // This is the name of the html file to display (passing the info in the model).
+        return "select_customerEditStep2";
+    }
+
+    /** Returns a 'view' (i.e., the name of an html file).
+     *    Since it is a view, we do NOT use @ResponseBody */
+    @GetMapping("/editCustomerEditStep3")
+    public String editCustomer(Integer parameterPassedToHandler_id, String usersChoice, ModelMap model) {
+        if(parameterPassedToHandler_id == null || usersChoice.equals("Cancel")) {
+            model.addAttribute("feedback_message", "Customer cancelled name change operation");
+            return "feedback.html";
+            // or you could do this:
+            // if customer cancelled, go back to home page
+            // return "redirect:/index.html";
+        }
+
+        Optional<Customer> customerToChange = customerRepository.findById(parameterPassedToHandler_id);
+
+        if (customerToChange.isPresent()) {
+            Customer customerObject = customerToChange.get();
+            // Retrieve the information from the database and associate it with the
+            //   attribute "customers" in the model.  This attribute needs to correspond
+            //   to the name used in the html file that will be loaded.
+            model.addAttribute("customer", customerObject);
+
+            // This is the name of the html file to display (passing the info in the model).
+            return "edit_customer2";
+        }
+        return "redirect:/index.html"; // if error, go back to home page
+    }
+
+    /** Returns a 'view' (i.e., the name of an html file).
+     *    Since it is a view, we do NOT use @ResponseBody */
     @GetMapping("/list")
     public String getCustomers(ModelMap model) {
         // Retrieve the information from the database and associate it with the
@@ -58,7 +98,7 @@ public class CustomerMvcController {
     }
 
     /** Returns a success/fail message to be displayed on the page.  We need to use @ResponseBody */
-    @GetMapping("/updateName")
+    @GetMapping("/updateNameEditStep5")
     @ResponseBody
     public String updateCustomerName(int id, String newName) {
         Optional<Customer> customerToChange = customerRepository.findById(id);
@@ -66,10 +106,37 @@ public class CustomerMvcController {
         if (customerToChange.isPresent()) {
             Customer customerObject = customerToChange.get();
             customerObject.setName(newName);
+
             customerRepository.save(customerObject);
             return "Customer name successfully changed";
         } else {
             return "Customer id " + id + " is not valid - not in database";
+        }
+    }
+
+    /** Returns a success/fail message to be displayed on the page.  We need to use @ResponseBody */
+    @GetMapping("/updateCustomer")
+    @ResponseBody
+    public String updateCustomerInfo(@ModelAttribute("customer") Customer customer) {
+    Optional<Customer> customerToChange = customerRepository.findById(customer.getId());
+
+        if (customerToChange.isPresent()) {
+            Customer customerObject = customerToChange.get();
+            if (!customer.getName().equals("Unchanged")) {
+                customerObject.setName(customer.getName());
+            }
+
+            if (customer.getAge() != -1) {
+                customerObject.setAge(customer.getAge());
+            }
+
+            if (!customer.getAddress().equals("Unchanged")) {
+                customerObject.setAddress(customer.getAddress());
+            }
+            customerRepository.save(customerObject);
+            return "Customer info successfully changed";
+        } else {
+            return "Customer id " + customer.getId() + " is not valid - not in database";
         }
     }
 
@@ -86,7 +153,4 @@ public class CustomerMvcController {
             return "Error choosing customer";
         }
     }
-
-
-
 }

@@ -1,13 +1,15 @@
-package com.jac.in_class_coding;
+package com.jac.in_class_coding.consoleversion;
 
+import com.jac.in_class_coding.CustomerDatabase;
+import com.jac.in_class_coding.UserChoice;
 import com.jac.in_class_coding.entity.Customer;
 
-public class MyController {
+public class ConsoleController {
     private ConsoleView view;
     private CustomerDatabase customerDatabase;
 
     // Constructor
-    public MyController() {
+    public ConsoleController() {
     }
 
     /** Method to configure this controller */

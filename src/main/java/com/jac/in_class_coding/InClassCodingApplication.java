@@ -1,15 +1,12 @@
 package com.jac.in_class_coding;
 
-import com.jac.in_class_coding.inclassexamples.PolymorphismExample;
-import com.jac.in_class_coding.inclassexamples.VisibilityModifiers;
+import com.jac.in_class_coding.consoleversion.ConsoleController;
+import com.jac.in_class_coding.consoleversion.ConsoleView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 public class InClassCodingApplication implements ApplicationContextAware {
@@ -27,7 +24,7 @@ public class InClassCodingApplication implements ApplicationContextAware {
         CustomerDatabase customerDatabase = new HibernateDatabase();
 //        CustomerDatabase customerDatabase = new ListBasedDatabase();
 
-        MyController controller = new MyController();
+        ConsoleController controller = new ConsoleController();
         controller.configure(view, customerDatabase);
 //
 //        VisibilityModifiers vm = new VisibilityModifiers();

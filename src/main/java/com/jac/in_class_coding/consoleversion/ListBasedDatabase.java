@@ -1,5 +1,6 @@
-package com.jac.in_class_coding;
+package com.jac.in_class_coding.consoleversion;
 
+import com.jac.in_class_coding.CustomerDatabase;
 import com.jac.in_class_coding.entity.Customer;
 
 import java.util.ArrayList;
