@@ -59,7 +59,41 @@ public class CustomerMvcController {
 
     /** Returns a 'view' (i.e., the name of an html file).
      *    Since it is a view, we do NOT use @ResponseBody */
+    @GetMapping("/chooseCustomerEditStep1_alternate")
+    public String chooseCustomersAlternate(ModelMap model) {
+        // Retrieve the information from the database and associate it with the
+        //   attribute "customers" in the model.  This attribute needs to correspond
+        //   to the name used in the html file that will be loaded.
+        model.addAttribute("customers", customerRepository.findAll());
+
+        // This is the name of the html file to display (passing the info in the model).
+        return "select_customerEditStep2_radioButtonversion";
+    }
+
+    /** Returns a 'view' (i.e., the name of an html file).
+     *    Since it is a view, we do NOT use @ResponseBody */
     @GetMapping("/editCustomerEditStep3")
+    public String editCustomer(Integer parameterPassedToHandler_id, ModelMap model) {
+
+        Optional<Customer> customerToChange = customerRepository.findById(parameterPassedToHandler_id);
+
+        if (customerToChange.isPresent()) {
+            Customer customerObject = customerToChange.get();
+            // Retrieve the information from the database and associate it with the
+            //   attribute "customers" in the model.  This attribute needs to correspond
+            //   to the name used in the html file that will be loaded.
+            model.addAttribute("customer", customerObject);
+
+            // This is the name of the html file to display (passing the info in the model).
+            return "edit_customer_infoEditStep4";
+        }
+        return "redirect:/index.html"; // if error, go back to home page
+    }
+
+
+    /** Returns a 'view' (i.e., the name of an html file).
+     *    Since it is a view, we do NOT use @ResponseBody */
+    @GetMapping("/editCustomerEditStep3_alternate")
     public String editCustomer(Integer parameterPassedToHandler_id, String usersChoice, ModelMap model) {
         if(parameterPassedToHandler_id == null || usersChoice.equals("Cancel")) {
             model.addAttribute("feedback_message", "Customer cancelled name change operation");

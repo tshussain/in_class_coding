@@ -6,30 +6,15 @@
 </head>
 <body>
 <!--See: https://www.toptal.com/spring/beginners-guide-to-mvc-with-spring-framework-->
-<!--    <form th:action="@{/editCustomerEditStep3}" method="get" enctype="multipart/form-data" >-->
-<!--        <select name="parameterPassedToHandler_id">-->
-<!--            <option th:each="customer : ${customers}"-->
-<!--                    th:value="${customer.id}"-->
-<!--                    th:text="${customer.name}">Customer</option>-->
-<!--        </select>-->
+    <form th:action="@{/editCustomerEditStep3}" method="get" enctype="multipart/form-data" >
+        <select name="parameterPassedToHandler_id">
+            <option th:each="customer : ${customers}"
+                    th:value="${customer.id}"
+                    th:text="${customer.name}">Customer</option>
+        </select>
 
-<!--        <input type="submit" value="Choose customer"/>-->
-<!--    </form>-->
-
-<div>Which customer would you like to change?  </div>
-<form th:action="@{/editCustomerEditStep3}" method="get">
-    <div th:each="customer : ${customers}">
-        <div>
-            <input type="radio" th:name="parameterPassedToHandler_id" th:value="${customer.id}">
-            <label th:text="${customer.name}"></label>
-        </div>
-    </div>
-<!--    <input type="submit" value="Choose customer"/>-->
-    <input type="submit" th:name="usersChoice" th:value="Submit">
-    <input type="submit" th:name="usersChoice" th:value="Cancel">
-</form>
-
-
+        <input type="submit" value="Choose customer"/>
+    </form>
 </div>
 </body>
 </html>
