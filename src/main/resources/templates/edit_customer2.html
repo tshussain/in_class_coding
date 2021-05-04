@@ -15,18 +15,18 @@
         <!--        Id of customer to change-->
 <!-- Instead of using value= and ${param} to reflect a parameter to return, we use
        field= and *{fieldName}.   This will be accessed as newCustomerInfo.fieldName in the controller -->
-        <input type="hidden" th:field="*{id}" name="id" />
+        <input type="hidden" th:field="*{id}"/>
     </div>
     <div>
-        <label for="theNewName">New name for customer (current name is [[${customer.name}]]):</label>
+        <label for="theNewName">New name for customer (current name is [[${givenCustomer.name}]]):</label>
         <input th:field="*{name}" id="theNewName" value="Unchanged">
     </div>
     <div>
-        <label for="theNewAge">New age for customer (current name is [[${customer.age}]]):</label>
+        <label for="theNewAge">New age for customer (current name is [[${givenCustomer.age}]]):</label>
         <input th:field="*{age}" id="theNewAge" value="-1">
     </div>
     <div>
-        <label for="theNewAddress">New age for customer (current name is [[${customer.address}]]):</label>
+        <label for="theNewAddress">New address for customer (current name is [[${givenCustomer.address}]]):</label>
         <input th:field="*{address}" id="theNewAddress" value="Unchanged">
     </div>
     <div>

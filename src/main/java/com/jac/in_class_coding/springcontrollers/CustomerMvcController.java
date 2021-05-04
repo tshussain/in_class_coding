@@ -110,7 +110,7 @@ public class CustomerMvcController {
             // Retrieve the information from the database and associate it with the
             //   attribute "customers" in the model.  This attribute needs to correspond
             //   to the name used in the html file that will be loaded.
-            model.addAttribute("customer", customerObject);
+            model.addAttribute("givenCustomer", customerObject);
 
             // This is the name of the html file to display (passing the info in the model).
             return "edit_customer2";
