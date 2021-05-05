@@ -4,9 +4,12 @@ import com.jac.in_class_coding.entity.Customer;
 import com.jac.in_class_coding.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -97,6 +100,10 @@ public class CustomerMvcController {
     public String editCustomer(Integer parameterPassedToHandler_id, String usersChoice, ModelMap model) {
         if(parameterPassedToHandler_id == null || usersChoice.equals("Cancel")) {
             model.addAttribute("feedback_message", "Customer cancelled name change operation");
+            model.addAttribute("networkImageUrl", "https://simpleandseasonal.com/wp-content/uploads/2018/02/Crockpot-Express-E6-Error-Code.png");
+            model.addAttribute("localImageUrl", "images/pug.jpg");
+
+
             return "feedback.html";
             // or you could do this:
             // if customer cancelled, go back to home page
@@ -186,5 +193,26 @@ public class CustomerMvcController {
         }  else {
             return "Error choosing customer";
         }
+    }
+
+    /** Create the listener */
+    @GetMapping("/search")
+    public String displayMatchingCustomers(String name, Model model) {
+        Iterable<Customer> customerChosen = customerRepository.findAll();
+
+        List<Customer> matchesSoFar = new ArrayList<>();
+
+        // Loop over all customers form the repository and
+        //   keep track of all the ones who have a matching name
+        for (Customer customer : customerChosen) {
+            if (customer.getName().contains(name)) {
+                matchesSoFar.add(customer);
+            }
+        }
+
+        model.addAttribute("customers", matchesSoFar);
+
+        // This is the name of the html file to display (passing the info in the model).
+        return "list_customers";
     }
 }
