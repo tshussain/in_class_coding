@@ -9,6 +9,7 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
+    @Lob
     String name;
     int age;
     String address;
