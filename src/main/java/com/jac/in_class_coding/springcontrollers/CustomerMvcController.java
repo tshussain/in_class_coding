@@ -205,7 +205,7 @@ public class CustomerMvcController {
         // Loop over all customers form the repository and
         //   keep track of all the ones who have a matching name
         for (Customer customer : customerChosen) {
-            if (customer.getName().contains(name)) {
+            if (org.apache.commons.lang3.StringUtils.containsIgnoreCase(customer.getName(),name)) {
                 matchesSoFar.add(customer);
             }
         }
@@ -215,4 +215,5 @@ public class CustomerMvcController {
         // This is the name of the html file to display (passing the info in the model).
         return "list_customers";
     }
+
 }
