@@ -216,4 +216,16 @@ public class CustomerMvcController {
         return "list_customers";
     }
 
+    /** Create the listener */
+    @GetMapping("/deleteCustomer")
+    public String deleteCustomer(int id, Model model) {
+        customerRepository.deleteById(id);
+        model.addAttribute("feedback_message", "Customer deleted");
+        model.addAttribute("networkImageUrl", "https://simpleandseasonal.com/wp-content/uploads/2018/02/Crockpot-Express-E6-Error-Code.png");
+        model.addAttribute("localImageUrl", "images/pug.jpg");
+
+
+        return "feedback.html";
+
+    }
 }

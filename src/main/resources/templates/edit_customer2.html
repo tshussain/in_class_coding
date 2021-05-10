@@ -33,5 +33,13 @@
         <button>Change customer info</button>
     </div>
 </form>
+<!--Example of 2nd dynamic button on a view using a button within a form.
+  The form is needed to provide the action so that the right handler can
+  be called.  The button is dynamic since it uses information passed from
+   a handler in an attribute.-->
+<form action="#" th:action="@{/deleteCustomer}" th:object="${customer}" method="GET">
+    <input type="hidden" th:value="${customer.id}" name="id" />
+    <button>Delete customer</button>
+</form>
 </body>
 </html>
